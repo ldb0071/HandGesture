@@ -3,12 +3,14 @@ import mediapipe as mp
 import numpy as np 
 import math
 
+#update my code to this one and it will work fine for you 
 class handDetector():
     def __init__(self, mode=False, maxHands=1, detectionCon=0.7, trackCon=0.8):
         self.mode = mode
         self.maxHands = maxHands
         self.detectionCon = detectionCon
         self.trackCon = trackCon
+        
         self.mpHands = mp.solutions.hands
         self.hands = self.mpHands.Hands(self.mode, self.maxHands,
                                         self.detectionCon, self.trackCon)

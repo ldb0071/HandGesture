@@ -1,6 +1,9 @@
 import numpy as np
-from keras.preprocessing import image
-from keras.models import load_model
+from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.keras.models import load_model
+
+# from keras.preprocessing import image
+# from keras.models import load_model
 import cv2
 import os
 import sys
@@ -91,11 +94,11 @@ def comunication(msg) :
 
 
 def thres_display(img):
-    width=64
-    height=64
+    width=32
+    height=85
     dim=(width,height)
     resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
-    test_img=image.img_to_array(resized)
+    test_img=img_to_array(resized)
     test_img=np.expand_dims(test_img,axis=0)
     test_img /= 255
     result= newmod.predict(test_img)
@@ -147,7 +150,7 @@ tes
 
 
 
-newmod=load_model('Gesture_classification.h5')
+newmod=load_model('zack.h5')
 
 
 background = None
@@ -195,7 +198,7 @@ while True:
                descion(kl)      
                cv2.imshow("Threshol Image", threshold)
             except:
-                cv2.destroyWindow('Threshol Image')
+                # cv2.destroyWindow('Threshol Image')
                 pass
             try:
               res=thres_display(threshold)
