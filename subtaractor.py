@@ -213,10 +213,10 @@ while True:
         #finding hands using mediapipe library
         img = detector.findHands(img)
         lmList, bbox = detector.findPosition(img, draw=False)
-        #
+        #checking if the hand left  or right 
         global test
         test=detector.handType(img)  
-        
+        #starting counting time if the left hand detected
         if hand is not None:
             thresholded = hand
             start = time.time()
