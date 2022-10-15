@@ -5,4 +5,4 @@ This project is about hand gesture recognition using opencv and mediapipe librar
 
 _______________________________________________________________________________________
 
-# classess of hand gesture
+## Classess of Hand Gesture
