@@ -188,30 +188,41 @@ cam.set(4, 480)
 
 #
 while True:
-    
+    #applying camera function to get the frame
     frame,frame_copy,gray=camera(cam)
     
+    #setting the condition to start the hand detection
     if num_frames < 60:
         
+        #calculating accumulated_weight average
         calc_accum_avg(gray, accumulated_weight)
-        
+        #getting the background 
         if num_frames <= 59:
             
+            #getting background average message
             cv2.putText(frame_copy, "GETTING BACKGROUND AVG", (200, 400), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)       
     else: 
-         
+        
+        #calling list of commands on screen  
         list_com()
+        #segmenting moving objects 
         hand = segment(gray)
         img = frame
         img_2 = frame
+        
+        #finding hands using mediapipe library
         img = detector.findHands(img)
         lmList, bbox = detector.findPosition(img, draw=False)
+        #
         global test
         test=detector.handType(img)  
         
         if hand is not None:
             thresholded = hand
             start = time.time()
+             
+             
+             
              
             try:
                 
