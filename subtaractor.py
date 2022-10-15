@@ -113,8 +113,6 @@ def descion(k):
                             cv2.destroyAllWindows()
                             try:
                                 if res[0]==3:
-                                    comunication(res[0])
-                                if res[0]==3:
                                     comunication(res[0])    
                                 
                                 if res[0]== 1: 
@@ -135,7 +133,7 @@ def descion(k):
                                     #playsound('sound_mode_shut.mp3')
                                 if res[0]== 7: 
                                         pass
-                                       #playsound('turn on the fan.mp3')     
+                                    #playsound('turn on the fan.mp3')     
                                 num_frames = 0
                                 if num_frames==0:
                                     os.execv(sys.executable, ['python'] + sys.argv)           
