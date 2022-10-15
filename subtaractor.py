@@ -55,7 +55,7 @@ def calc_accum_avg(frame, accumulated_weight):
     #checking if the background is None
     if background is None:
         background = frame.astype("float")
-        frame_data=frame
+        frame_data = frame
         # cv2.imshow('backgrounder',frame_data)
         return None
     #computing weighted average, accumulate it and update the background
@@ -74,14 +74,14 @@ def camera(cami):
 
 
 # A function that segment the hand region and returns the thresholded image
-def segment(frame, threshold=20):
+def segment(frame, threshold = 20):
     global background
     diff = cv2.absdiff(background.astype("uint8"), frame)
     cv2.imshow('background',background)
     cv2.imshow('deffirance',diff)
     _ , thresholded = cv2.threshold(diff, threshold, 255, cv2.THRESH_BINARY)
     contours= cv2.findContours(thresholded.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
-    if len(contours) ==0:
+    if len(contours) == 0:
         calc_accum_avg(gray, accumulated_weight)
         cv2.putText(frame_copy, str('None'), (70, 45), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
         return None
@@ -102,12 +102,12 @@ def comunication(msg) :
 
 #A function that feed the segmented hand to the model and predict the gesture
 def thres_display(img):
-    width=64
-    height=64
-    dim=(width,height)
+    width = 64
+    height = 64
+    dim = (width,height)
     resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
-    test_img=image.img_to_array(resized)
-    test_img=np.expand_dims(test_img,axis=0)
+    test_img = image.img_to_array(resized)
+    test_img = np.expand_dims(test_img,axis=0)
     test_img /= 255
     result= newmod.predict(test_img)
     #print("%s: %.2f%%" % (newmod.metrics_names[1], result[1]*100))    
@@ -124,18 +124,18 @@ def descion(k):
                             cam.release()
                             cv2.destroyAllWindows()
                             try:
-                                if res[0]==3:
+                                if res[0] == 3:
                                     comunication(res[0])
-                                if res[0]==3:
+                                if res[0] == 3:
                                     comunication(res[0])    
                                 
-                                if res[0]== 1: 
+                                if res[0] == 1: 
                                         #playsound('trun on the light.mp3') 
                                         comunication(res[0])
-                                if res[0]== 0: 
+                                if res[0] == 0: 
                                         #playsound('turn off.mp3')  
                                         comunication(res[0])
-                                if res[0]== 3: 
+                                if res[0] == 3: 
                                         #playsound('turn off.mp3')  
                                         comunication(res[0])    
                                           
@@ -145,16 +145,16 @@ def descion(k):
                                     sss=sound_music.main()
                                     sss
                                     #playsound('sound_mode_shut.mp3')
-                                if res[0]== 7: 
+                                if res[0] == 7: 
                                         pass
                                        #playsound('turn on the fan.mp3')     
                                 num_frames = 0
-                                if num_frames==0:
+                                if num_frames == 0:
                                     os.execv(sys.executable, ['python'] + sys.argv)           
                             except:
                                 num_frames = 0                         
  else:
-                    k=0   
+        k=0   
 
 
 
@@ -190,6 +190,7 @@ cam.set(4, 480)
 while True:
     
     frame,frame_copy,gray=camera(cam)
+    
     if num_frames < 60:
         
         calc_accum_avg(gray, accumulated_weight)
@@ -201,8 +202,8 @@ while True:
          
         list_com()
         hand = segment(gray)
-        img=frame
-        img_2=frame
+        img = frame
+        img_2 = frame
         img = detector.findHands(img)
         lmList, bbox = detector.findPosition(img, draw=False)
         global test
@@ -264,7 +265,7 @@ while True:
     cv2.imshow("Hand Gestures", frame_copy)
     k = cv2.waitKey(10) & 0xFF
     if k == ord('r'):
-        num_frames=0
+        num_frames = 0
           
     if k == ord('z'):
         break
