@@ -1,3 +1,4 @@
+######################################################################## IMPORTANT ########################################################################
 import numpy as np
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
@@ -11,7 +12,6 @@ import time
 from numpy.lib.function_base import append
 import multiprocessing_test as MPI
 from playsound import playsound
-
 
 
 #Values initialization 
@@ -164,24 +164,29 @@ def descion(k):
 
 
 #playsound('open_system.mp3')
+#creating an object of the class multiprocessing_test
 tes=MPI.main()
+# Runing object of the class multiprocessing_test to get access to the system   
 tes
+#loading classification model
 newmod=load_model('model_colab_1.h5')
+#initializing the accumulated weight and background
 background = None
 accumulated_weight = 0.3
-zz=0
+#using handDetector class from HandTrackingModule
 detector = htm.handDetector(detectionCon=0.8)
+#Selecting camera 
 cam = cv2.VideoCapture(0) 
 kl=0
-n=0
 num_frames = 0
+#Camera definition
 cam.set(3, 720)
 cam.set(4, 480)
 #playsound('background.mp3')
 
 
 
-
+#
 while True:
     
     frame,frame_copy,gray=camera(cam)
