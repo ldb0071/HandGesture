@@ -3,14 +3,12 @@ import mediapipe as mp
 import numpy as np 
 import math
 
-#update my code to this one and it will work fine for you 
 class handDetector():
     def __init__(self, mode=False, maxHands=1, detectionCon=0.7, trackCon=0.8):
         self.mode = mode
         self.maxHands = maxHands
         self.detectionCon = detectionCon
         self.trackCon = trackCon
-        
         self.mpHands = mp.solutions.hands
         self.hands = self.mpHands.Hands(self.mode, self.maxHands,
                                         self.detectionCon, self.trackCon)
@@ -77,7 +75,6 @@ class handDetector():
         return length, img, [x1, y1, x2, y2, cx, cy]
     
 
-
     def fingersUp(self):
         fingers = []
         if self.lmList[20][2] < self.lmList[18][2]:
@@ -85,8 +82,7 @@ class handDetector():
         else:
                 fingers.append(0)
         return fingers  
-
-
+    
 
     def roi_extractor(self,img,hands):
          image_width, image_height = img.shape[1], img.shape[0]
@@ -107,8 +103,7 @@ class handDetector():
                         
             return  x, y, w, h
             
-
-
+    
     def handType(self,img):
        
         self.results = self.hands.process(img)
@@ -121,7 +116,6 @@ class handDetector():
             except:
                 pass        
       
-    
 
 def main():
         wCam, hCam = 640, 480
@@ -131,14 +125,7 @@ def main():
         cam.set(3, wCam)
         cam.set(4, hCam)
         pTime = 0
-
         detector = handDetector(detectionCon=0.8, maxHands=1)
-
-        
-        # volume.GetMute()
-        # volume.GetMasterVolumeLevel()
-      
-        
         volBar = 400
         volPer = 0
         area = 0
@@ -153,20 +140,25 @@ def main():
             text=detector.handType(img)
             print(text)
             
-            if len(lmList) != 0:   
+            if len(lmList) != 0:
+                
                 # Filter based on size
                 area = (bbox[2] - bbox[0]) * (bbox[3] - bbox[1]) // 100
                 # print(area)
                 if 250 < area < 1000:
+
                     # Find Distance between index and Thumb
                     length, img, lineInfo = detector.findDistance(4, 8, img)
                     # print(length)
+
                     # Convert Volume
                     volBar = np.interp(length, [50, 200], [400, 150])
                     volPer = np.interp(length, [50, 200], [0, 100])
+
                     # Reduce Resolution to make it smoother
                     smoothness = 10
                     volPer = smoothness * round(volPer / smoothness)
+
                     # Check fingers up
                     fingers = detector.fingersUp()
                     # print(fingers)
@@ -178,14 +170,12 @@ def main():
                         break
                     else:
                         colorVol = (255, 0, 0)
+
             # Drawings
             cv2.rectangle(img, (50, 150), (85, 400), (255, 0, 0), 3)
             cv2.rectangle(img, (50, int(volBar)), (85, 400), (255, 0, 0), cv2.FILLED)
             cv2.imshow("Img", img)
             cv2.waitKey(1)
-
-
- 
 
 if __name__ == "__main__":
     main()

@@ -1,28 +1,32 @@
+################################################################ IMPORTING LIBRARIES ########################################################################
 import cv2
 import numpy as np
 import HandTrackingModule as htm
-
-
 from ctypes import cast, POINTER
 from comtypes import CLSCTX_ALL
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
 class sounder():
-    def __init__(self,wcam,hcam):
-        self.wcam=wcam
-        self.hcam=hcam
-     
+    def __init__(self):
+        pass
+
+######################################################################## MAIN ########################################################################     
+
 def main():
     ################################
     wCam, hCam = 1920, 1080
     ################################
     cap = cv2.VideoCapture(0)
+    #setting up the camera definition
     cap.set(3, wCam)
     cap.set(4, hCam)
+    #creating object from handDetector class
     detector = htm.handDetector(detectionCon=0.8, maxHands=1)
+    #enabling sound volBar
     devices = AudioUtilities.GetSpeakers()
     interface = devices.Activate(
         IAudioEndpointVolume._iid_, CLSCTX_ALL, None)
+    #creating volume interface and intializing volbar  volume range and color and area  
     volume = cast(interface, POINTER(IAudioEndpointVolume))
     volBar = 400
     volPer = 0

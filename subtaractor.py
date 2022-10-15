@@ -1,4 +1,4 @@
-######################################################################## IMPORTANT ########################################################################
+######################################################################## IMPORTING LIBRARIES ########################################################################
 import numpy as np
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
@@ -12,6 +12,8 @@ import time
 from numpy.lib.function_base import append
 import multiprocessing_test as MPI
 from playsound import playsound
+
+
 
 
 #Values initialization 
@@ -156,12 +158,7 @@ def descion(k):
  else:
         k=0   
 
-
-
-
-
-
-
+######################################################################## MAIN ########################################################################
 
 #playsound('open_system.mp3')
 #creating an object of the class multiprocessing_test
@@ -184,9 +181,7 @@ cam.set(3, 720)
 cam.set(4, 480)
 #playsound('background.mp3')
 
-
-
-#
+######################################################################## PROGRAM LOOP ########################################################################
 while True:
     #applying camera function to get the frame
     frame,frame_copy,gray=camera(cam)
@@ -222,48 +217,59 @@ while True:
             start = time.time()
              
              
-             
-             
             try:
                 
+               #Detecting hands  
                hans=detector.hands
-               x_1,y_1,w_1,h_1=detector.roi_extractor(frame,hans)
-               threshold=thresholded.copy()[y_1-20:y_1+h_1+10,x_1-20:x_1+w_1+10]
+               #getting bounding box of the hand
+               x_1,y_1,w_1,h_1 = detector.roi_extractor(frame,hans)
+               #croping the  the hand from thresholded image 
+               threshold  = thresholded.copy()[y_1-20:y_1+h_1+10,x_1-20:x_1+w_1+10]
+               
+               #capturing images using s key 
                if k == ord('s'):
-                roi_64 = cv2.resize(threshold, (64, 64)) 
+                #resizing thresholded image    
+                roi_64 = cv2.resize(threshold, (64, 64))
+                #creating save path 
                 save_path = os.path.join('finale_dataset/fist', '{}.jpg'.format(count + 1))
+                #saving the image 
                 cv2.imwrite(save_path, roi_64)
                 count += 1
+               
+               #calcuting time using time library
                end = time.time()
                end_1=end_1+end
                kl=((end_1-start)/10**10)
+               #making the decision after 2 seconds
                descion(kl)      
                cv2.imshow("Threshol Image", threshold)
                
             except:
                 
+                #destroy all windows      
                 cv2.destroyWindow('Threshol Image')
                 pass
             
             try:
-                
+               
+              #getting the segmented hand to the model and predict the gesture 
               res=thres_display(threshold)
               x=mapper(res[0])
               cv2.putText(frame_copy, str(res[0])+':'+x, (100,100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
               
             except:
-                
                 res=[]
+            
+            #if results is empty write None
             if len(res)==0:
-                
+                #adding a text to the screen that display None
                cv2.putText(frame_copy,'None', (70, 45), cv2.FONT_HERSHEY_SIMPLEX, 1, (0,0,255), 2)
                res=[]
                
             else: 
-                
-                    pass
+                pass
                    
-               
+        #if the left hand detected reset the time      
         if test =='Left':
             start=0           
             end_1=0
@@ -275,9 +281,11 @@ while True:
     num_frames += 1
     cv2.imshow("Hand Gestures", frame_copy)
     k = cv2.waitKey(10) & 0xFF
+    #reset background average using r button 
     if k == ord('r'):
         num_frames = 0
-          
+    
+    #exit the program using Z    
     if k == ord('z'):
         break
 
