@@ -126,30 +126,23 @@ def descion(k):
                             cam.release()
                             cv2.destroyAllWindows()
                             try:
-                                if res[0] == 3:
-                                    comunication(res[0])
-                                if res[0] == 3:
+                                if res[0] == 0:
                                     comunication(res[0])    
-                                
                                 if res[0] == 1: 
                                         #playsound('trun on the light.mp3') 
                                         comunication(res[0])
-                                if res[0] == 0: 
+                                if res[0] == 2: 
                                         #playsound('turn off.mp3')  
                                         comunication(res[0])
-                                if res[0] == 3: 
+                                if res[0] == 4: 
                                         #playsound('turn off.mp3')  
-                                        comunication(res[0])    
-                                          
-                                   
+                                        comunication(res[0])        
                                 if res[0] == 5:
                                     #playsound('sound_system.mp3')
-                                    sss=sound_music.main()
-                                    sss
+                                    start_sound_manipulation=sound_music.main()
+                                    start_sound_manipulation
                                     #playsound('sound_mode_shut.mp3')
-                                if res[0] == 7: 
-                                        pass
-                                       #playsound('turn on the fan.mp3')     
+                                        
                                 num_frames = 0
                                 if num_frames == 0:
                                     os.execv(sys.executable, ['python'] + sys.argv)           
