@@ -142,6 +142,11 @@ def descion(k):
                                     start_sound_manipulation=sound_music.main()
                                     start_sound_manipulation
                                     #playsound('sound_mode_shut.mp3')
+                                if res[0] == 6:
+                                    pass
+                                if res[0] == 7:
+                                    pass
+                               
                                         
                                 num_frames = 0
                                 if num_frames == 0:
