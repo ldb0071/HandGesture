@@ -4,7 +4,7 @@
 
 This project is about controlling home appliances using hand gestures. The project is based on the concept of hand gesture recognition. The project uses a camera to capture the hand gestures and then the gestures are recognized using a python script. The python script is then connected to the home appliances using a relay module. The relay module is connected to the home appliances and the appliances are controlled using the python script. The project is based on the concept of hand gesture recognition. The project uses a camera to capture the hand gestures and then the gestures are recognized using a python script. The python script is then connected to the home appliances using a relay module. The relay module is connected to the home appliances and the appliances are controlled using the python script.
 
-## Hardware Requirements
+## Os
 1. Raspberry Pi 3
 2. Camera Module
 3. Relay Module
