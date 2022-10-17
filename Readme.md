@@ -17,10 +17,6 @@ This project is about controlling home appliances using hand gestures. The proje
 2. Windows
 3. Raspbian OS
 
-## Description of HandTrackingModule 
-
-The HandTrackingModule is a python script that is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand.
-
 ## requirements 
 ```bash 
 pip install -r requirements.txt
@@ -38,3 +34,7 @@ CLASS_MAP = {0:'fist',
    6:'three',
  7:'thumbs'}
  ```
+
+<!-- Add an image to readme-->
+## Image
+![plot](Data_Colleting.png)
