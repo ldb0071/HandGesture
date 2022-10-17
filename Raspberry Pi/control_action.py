@@ -1,4 +1,3 @@
-#create a function that turn on lights and turn off lights depends on socket that is connected to the raspberry pi
 import RPi.GPIO as GPIO
 import time
 
