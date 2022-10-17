@@ -4,10 +4,9 @@
 Mohamed Khider University of Biskra 
 Faculty of Sciences and Technology 
 Electrical Engineering Department  
-
 Master 2 in Electrical Engineering  
 Supervisor from Algeria: Ouafi abdelkarim
-Supervisor from France: Taleb Abdelmalik 
+
 Student: Sellam Abdellah Zakaria
 ___
 
