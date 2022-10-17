@@ -13,12 +13,12 @@ This project is about controlling home appliances using hand gestures. The proje
 7. servo motor
 
 ## Software Requirements
-1. Python 3.5
-2. OpenCV 3.4.1
+2. Windows
 3. Raspbian OS
 
-## description  of HandTrackingModule
-The HandTrackingModule is a python script that is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand.
+## Description of HandTrackingModule 
+
+The HandTrackingModule is a python script that is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand. The script uses the mediapipe library to detect the hand and the landmarks of the hand. The script is used to detect the hand and the landmarks of the hand.
 
 ## requirements 
 <!-- write pip install -r requirements.txt code block -->
