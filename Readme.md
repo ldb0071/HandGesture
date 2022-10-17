@@ -35,6 +35,7 @@ CLASS_MAP = {0:'fist',
  7:'thumbs'}
  ```
 
-<!-- Add an image to readme-->
+<!-- Add an image to readme with specific size-->
 ## Image
+![plot](Background_Subtraction.png)
 ![plot](Data_Colleting.png)
